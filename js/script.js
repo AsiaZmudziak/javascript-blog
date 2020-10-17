@@ -57,6 +57,9 @@ function generateTitleLinks() {
     for (let article of articles) {
     
   /* get the article id */
+  const articleId = clickedElement.getAttribute('id');
+  console.log(articleId);
+
   /* find the title element */
   /* get the title from the title element */
   /* create HTML of the link */
