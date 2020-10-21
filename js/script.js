@@ -150,7 +150,7 @@ function generateTags() {
     console.log(tag);
   
     /* find all tag links with class active */
-    const activeTagLinks = document.querySelectorAll('a.activ[href^=#tag-"]');
+    const activeTagLinks = document.querySelectorAll('a.active[href^=#tag-"]');
     console.log(activeTagLinks);
   
     /* START LOOP: for each active tag link */
@@ -159,6 +159,7 @@ function generateTags() {
       /* remove class active */
       activeTagLink.classList.remove('active');
     }
+  }
   
     /* END LOOP: for each active tag link */
   
