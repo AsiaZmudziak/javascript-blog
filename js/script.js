@@ -129,6 +129,7 @@ function generateTags() {
     /* END LOOP: for every article: */
     }
 }
+}
   
   generateTags();
 
@@ -159,7 +160,6 @@ function generateTags() {
       /* remove class active */
       activeTagLink.classList.remove('active');
     }
-  }
   
     /* END LOOP: for each active tag link */
   
