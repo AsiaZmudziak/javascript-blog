@@ -114,6 +114,7 @@ body {
 /* Tags */
 .sidebar .tags li {
     display: inline-block;
+    margin-right: 3px;
   }
   
   .tag-size-1 {
