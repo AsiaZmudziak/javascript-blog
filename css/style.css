@@ -136,4 +136,8 @@ body {
   .tag-size-5 {
     font-size: 180%;
   }
+li {
+    margin-right: 3px;
+}
+ 
 /*# sourceMappingURL=style.css.map */
