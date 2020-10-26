@@ -1,8 +1,9 @@
 'use strict';
-/*document.getElementById('test-button').addEventListener('click', function () {
-    const links = document.querySelectorAll('.titles a');
-    console.log('links:', links);
-});*/
+
+const templates = {
+  articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML)
+};
+
 const titleClickHandler = function (event) {
     event.preventDefault();
     const clickedElement = this;
@@ -47,13 +48,13 @@ const optArticleSelector = '.post',
     optCloudClassCount = '5',
     optCloudClassPrefix = 'tag-size-';
     
-function generateTitleLinks() {
+function generateTitleLinks(customSelector = '') {
     /*[DONE] remove contents of titleList */
     const titleList = document.querySelector(optTitleListSelector);
     titleList.innerHTML = '';
 
     /*[DONE] for each article */
-    const articles = document.querySelectorAll(optArticleSelector);
+    const articles = document.querySelectorAll(optArticleSelector + customSelector);
     let html = '';
     for (let article of articles) {
 
@@ -68,8 +69,9 @@ function generateTitleLinks() {
         console.log(articleTitle);
 
         /*[DONE] create HTML of the link */
-        const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-        console.log(linkHTML);
+        //const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+    const linkHTMLData = { id: articleId, title: articleTitle };
+    const linkHTML = templates.articleLink(linkHTMLData);
 
         /*[DONE] insert link into titleList */
         html = html + linkHTML;
@@ -223,7 +225,7 @@ allTags[tag] = 1;
     console.log(tag);
   
     /* find all tag links with class active */
-    const activeTagLinks = document.querySelectorAll('a.active[href^=#tag-"]');
+    const activeTagLinks = document.querySelectorAll('a.active[href^="#tag-"]');
     console.log(activeTagLinks);
   
     /* START LOOP: for each active tag link */
@@ -254,7 +256,7 @@ allTags[tag] = 1;
   
   function addClickListenersToTags(){
     /* find all links to tags */
-    const links = document.querySelectorAll('.post-tags a');
+     const links = document.querySelectorAll('.post-tags a, .list.tags a');
     console.log(links)
   
     /* START LOOP: for each link */
@@ -373,11 +375,10 @@ allTags[tag] = 1;
   function addClickListenersToAuthors() {
   
     /* find all links to authors */
-    const links = document.querySelectorAll('.post-author a');
+    const links = document.querySelectorAll('.post-author a, .list.authors a');
   
     /* START LOOP: for each link */
     for (let link of links) {
-  
       /* add authorClickHandler as event listener for that link */
       link.addEventListener('click', authorClickHandler);
     }
